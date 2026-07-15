@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliação - Avaliação de Atendimento</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="card">
+      <div class="brand">
+        <h1>Avalie seu atendimento</h1>
+        <p>Selecione de 1 a 5 estrelas para cada pergunta</p>
+      </div>
+
+      <div class="error-msg" id="errorMsg"></div>
+      <div class="success-msg" id="successMsg"></div>
+
+      <div id="questionsContainer"></div>
+
+      <button class="btn btn-primary" id="submitBtn">Enviar Avaliação</button>
+      <div class="footer-actions">
+        <button class="btn btn-secondary btn-small" id="backBtn">Voltar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/evaluation.js"></script>
+</body>
+</html>
