@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const os = require('os');
 
 require('./database/db'); // garante que as tabelas existam
 

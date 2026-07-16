@@ -1,0 +1,333 @@
+/* Estilos específicos da tela de login.
+   A maior parte do visual (card, inputs, botão) já vem do base.css */
+/* =========================
+   LOGIN DAE AMERICANA
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Fundo */
+
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:#fff;
+}
+
+/* Mancha superior */
+
+.wave-top{
+  position:absolute;
+  width:420px;
+  height:220px;
+  left:-80px;
+  top:-60px;
+  background:linear-gradient(135deg,#6ec56f,#2d74d8);
+  border-bottom-right-radius:240px;
+}
+
+/* Mancha inferior */
+
+.wave-bottom{
+  position:absolute;
+  width:430px;
+  height:220px;
+  right:-80px;
+  bottom:-60px;
+  background:linear-gradient(135deg,#2d74d8,#1d5fb9);
+  border-top-left-radius:240px;
+}
+
+/* Container */
+
+.screen{
+    min-height:100vh;
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    padding:40px 20px;
+}
+
+/* Logo */
+
+.logo{
+  width:180px;
+  margin-bottom:35px;
+}
+
+/* Card */
+
+.card{
+    width:100%;
+    max-width:700px;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.10);
+}
+
+/* Cabeçalho */
+
+.brand{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.brand h1{
+
+   color:#16346c;
+   font-size:38px;
+   line-height:1.2;
+   margin-bottom:12px;
+
+}
+
+.brand p{
+
+   color:#6b7280;
+   font-size:18px;
+}
+
+/* Mensagem de erro */
+
+.error-msg{
+
+  display:none;
+
+  margin-bottom:20px;
+
+  color:#d50000;
+
+  text-align:center;
+
+}
+
+/* Labels */
+
+label{
+
+  display:block;
+
+  margin-top:22px;
+  margin-bottom:10px;
+
+  font-size:22px;
+
+  font-weight:600;
+
+  color:#404040;
+
+}
+
+/* Inputs */
+
+input{
+
+  width:100%;
+
+   height:58px;
+
+  border:1px solid #d8dde7;
+
+  border-radius:18px;
+
+  padding:0 24px;
+
+  font-size:22px;
+
+  outline:none;
+
+  transition:.2s;
+
+}
+
+input:focus{
+
+  border-color:#2d74d8;
+
+  box-shadow:0 0 0 4px rgba(45,116,216,.12);
+
+}
+
+/* Placeholder */
+
+input::placeholder{
+
+  color:#9ca3af;
+
+}
+
+/* Botão */
+
+.btn-login{
+
+  width:100%;
+
+  height:60px;
+
+  margin-top:35px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:#1456c3;
+
+  color:#fff;
+
+  font-size:24px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+}
+
+.btn-login:hover{
+
+  background:#0f4bab;
+
+  transform:translateY(-2px);
+
+}
+
+.btn-login:active{
+
+  transform:scale(.98);
+
+}
+
+/* Responsivo */
+
+@media(max-width:900px){
+
+.card{
+
+    width:92%;
+    padding:35px;
+
+}
+
+.brand h1{
+
+    font-size:34px;
+
+}
+
+.brand p{
+
+    font-size:20px;
+
+}
+
+input{
+
+    height:60px;
+    font-size:18px;
+
+}
+
+.btn-login{
+
+    height:62px;
+    font-size:22px;
+
+}
+
+.logo{
+
+    width:140px;
+
+}
+
+}
+
+/* TABLET */
+
+@media (max-width:900px){
+
+    .logo{
+        width:150px;
+        margin-bottom:25px;
+    }
+
+    .card{
+        max-width:600px;
+        padding:35px;
+    }
+
+    .brand h1{
+        font-size:34px;
+    }
+
+    .brand p{
+        font-size:18px;
+    }
+
+}
+
+/* CELULAR */
+
+@media (max-width:600px){
+
+    .screen{
+        justify-content:flex-start;
+        padding-top:30px;
+    }
+
+    .logo{
+        width:120px;
+        margin-bottom:20px;
+    }
+
+    .card{
+        width:100%;
+        padding:25px;
+        border-radius:18px;
+    }
+
+    .brand h1{
+        font-size:28px;
+    }
+
+    .brand p{
+        font-size:16px;
+    }
+
+    label{
+        font-size:18px;
+    }
+
+    input{
+        height:52px;
+        font-size:16px;
+    }
+
+    .btn-login{
+        height:54px;
+        font-size:20px;
+    }
+
+}

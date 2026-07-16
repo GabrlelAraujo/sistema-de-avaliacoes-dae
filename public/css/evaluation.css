@@ -1,0 +1,48 @@
+/* Estilos específicos da tela de avaliação */
+
+.question-block {
+  margin-bottom: 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--border);
+}
+
+.question-block:last-of-type {
+  border-bottom: none;
+}
+
+.question-section {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.question-text {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.stars {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.star {
+  font-size: 36px;
+  cursor: pointer;
+  color: var(--star-empty);
+  transition: transform 0.1s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.star:hover {
+  transform: scale(1.15);
+}
+
+.star.filled {
+  color: var(--star-fill);
+}

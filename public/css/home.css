@@ -1,0 +1,25 @@
+/* Estilos específicos da tela inicial (home) */
+
+.home-card {
+  text-align: center;
+  padding: 56px 36px;
+}
+
+.welcome-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.welcome-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 36px;
+}
+
+.start-btn {
+  padding: 26px 40px;
+  font-size: 19px;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.35);
+}
