@@ -1,64 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel Admin - Avaliação de Atendimento</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="/css/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+
+    
+    <link rel="stylesheet" href="css/admin.css">
 </head>
+
 <body>
-  <div class="screen wide">
-    <div class="card">
-      <div class="top-bar">
+
+<header class="header">
+
+    <div class="header-left">
+
+        <img src="img/logo_dae.png" alt="DAE" class="logo">
+
         <div>
-          <h1 style="margin:0;font-size:20px;">Painel do Administrador</h1>
-          <p style="margin:4px 0 0;color:var(--text-muted);font-size:13px;">Resultados das avaliações</p>
+            <h1>Painel Administrativo</h1>
+            <p>Resultados das avaliações</p>
         </div>
-        <div class="footer-actions" style="margin:0;">
-          <button class="btn btn-secondary btn-small" id="backBtn">Voltar</button>
-          <button class="btn btn-secondary btn-small" id="logoutBtn">Sair</button>
-        </div>
-      </div>
 
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="summary">Resumo por Atendente</button>
-        <button class="tab-btn" data-tab="all">Todas as Avaliações</button>
-      </div>
-
-      <div class="tab-content active" id="tab-summary">
-        <table>
-          <thead>
-            <tr>
-              <th>Atendente</th>
-              <th>Total</th>
-              <th>Pergunta 1</th>
-              <th>Pergunta 2</th>
-              <th>Média Geral</th>
-            </tr>
-          </thead>
-          <tbody id="summaryBody"></tbody>
-        </table>
-        <div class="empty-state" id="summaryEmpty" style="display:none;">Nenhum dado ainda.</div>
-      </div>
-
-      <div class="tab-content" id="tab-all">
-        <table>
-          <thead>
-            <tr>
-              <th>Atendente</th>
-              <th>Pergunta 1</th>
-              <th>Pergunta 2</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody id="allBody"></tbody>
-        </table>
-        <div class="empty-state" id="allEmpty" style="display:none;">Nenhuma avaliação registrada ainda.</div>
-      </div>
     </div>
-  </div>
 
-  <script src="/js/admin.js"></script>
+    <div class="header-right">
+
+        <button id="backBtn" class="header-btn">
+            Voltar
+        </button>
+
+        <button id="logoutBtn" class="header-btn danger">
+            Sair
+        </button>
+
+    </div>
+
+</header>
+
+<main class="container">
+
+    <div class="toolbar">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Pesquisar atendente..."
+            >
+
+        </div>
+
+    </div>
+
+    <section class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Atendente</th>
+                    <th>Avaliações</th>
+                    <th>Pergunta 1</th>
+                    <th>Pergunta 2</th>
+                    <th>Média Geral</th>
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="summaryBody"></tbody>
+
+        </table>
+
+        <div
+            class="empty-state"
+            id="summaryEmpty"
+            style="display:none;"
+        >
+            Nenhum atendente encontrado.
+        </div>
+
+    </section>
+
+</main>
+
+<script src="js/admin.js"></script>
+
 </body>
 </html>

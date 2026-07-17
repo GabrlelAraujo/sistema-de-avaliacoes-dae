@@ -1,8 +1,8 @@
 /* Estilos específicos da tela de avaliação */
 
 .question-block {
-  margin-bottom: 30px;
-  padding-bottom: 26px;
+  margin-bottom: 36px;
+  padding-bottom: 30px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -20,27 +20,33 @@
 }
 
 .question-text {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
+  line-height: 1.5;
   margin-bottom: 14px;
 }
 
 .stars {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
 }
 
 .star {
-  font-size: 36px;
+  font-size: 42px;
   cursor: pointer;
   color: var(--star-empty);
-  transition: transform 0.1s ease, color 0.15s ease;
+  transition: all .2s ease;
   user-select: none;
 }
 
 .star:hover {
-  transform: scale(1.15);
+   color: var(--star-fill);
+    transform: scale(1.15);
 }
 
 .star.filled {

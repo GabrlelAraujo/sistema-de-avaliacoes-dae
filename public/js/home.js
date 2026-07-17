@@ -1,5 +1,7 @@
 const userNameEl = document.getElementById('userName');
 const adminBtn = document.getElementById('adminBtn');
+const startBtn = document.getElementById('starBtn')
+
 
 async function loadUser() {
   try {
@@ -12,8 +14,9 @@ async function loadUser() {
     userNameEl.textContent = data.user.name;
 
     if (data.user.role === 'admin') {
-      adminBtn.style.display = 'inline-flex';
-    }
+      window.location.href = '/admin.html';
+     
+    } 
   } catch (err) {
     window.location.href = '/login.html';
   }
@@ -28,8 +31,8 @@ document.getElementById('switchBtn').addEventListener('click', async () => {
   window.location.href = '/login.html';
 });
 
-document.getElementById('adminBtn').addEventListener('click', () => {
-  window.location.href = '/admin.html';
-});
+// document.getElementById('adminBtn').addEventListener('click', () => {
+  // window.location.href = '/admin.html';
+// });
 
 loadUser();

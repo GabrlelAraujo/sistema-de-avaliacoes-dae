@@ -1,25 +1,77 @@
-/* Estilos específicos da tela inicial (home) */
+/* HOME */
 
-.home-card {
-  text-align: center;
-  padding: 56px 36px;
+.home-card{
+    max-width:700px;
 }
 
-.welcome-text {
-  color: var(--text-muted);
-  font-size: 14px;
-  margin-bottom: 4px;
+.welcome-text{
+    color:#6b7280;
+    font-size:22px;
+    text-align:center;
 }
 
-.welcome-name {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 36px;
+.welcome-name{
+
+    font-size:42px;
+    color:#16346c;
+
+    font-weight:700;
+
+    margin-top:10px;
+    margin-bottom:40px;
+
+    text-align:center;
 }
 
-.start-btn {
-  padding: 26px 40px;
-  font-size: 19px;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.35);
+.footer-actions{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-small{
+
+    min-width:180px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    border:2px solid #1456c3;
+
+    background:white;
+
+    color:#1456c3;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn-small:hover{
+
+    background:#1456c3;
+
+    color:white;
+
+}
+
+@media(max-width:600px){
+
+    .welcome-name{
+        font-size:30px;
+    }
+
+    .footer-actions{
+        flex-direction:column;
+    }
+
+    .btn-small{
+        width:100%;
+    }
+
 }

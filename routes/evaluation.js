@@ -4,7 +4,7 @@ const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
-// Perguntas fixas por enquanto (fácil de expandir depois)
+// Perguntas 
 const QUESTIONS = [
   { id: 'question1', section: 1, text: 'Como foi seu atendimento?' },
   { id: 'question2', section: 2, text: 'Como foi seu atendimento?' }

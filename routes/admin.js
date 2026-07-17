@@ -31,20 +31,29 @@ router.get('/summary', requireAdmin, (req, res) => {
   res.json({ summary });
 });
 
-// GET /api/admin/evaluations -> lista completa de avaliações
-router.get('/evaluations', requireAdmin, (req, res) => {
-  const evaluations = db.prepare(`
-    SELECT
-      e.id,
-      u.name AS attendant_name,
-      e.question1_rating,
-      e.question2_rating,
-      e.created_at
-    FROM evaluations e
-    JOIN users u ON u.id = e.attendant_id
-    ORDER BY e.created_at DESC
-  `).all();
-  res.json({ evaluations });
-});
+
+//GET /api/admin/attendant/:id -> lista de avaliações por atendente
+router.get('/attendant/:id', requireAdmin, (req, res) => {
+  const { id } = req.params
+
+    const stmt = db.prepare(`
+        SELECT
+            e.id,
+            u.name AS attendant_name,
+            e.question1_rating,
+            e.question2_rating,
+            e.created_at
+        FROM evaluations e
+        JOIN users u ON u.id = e.attendant_id
+        WHERE e.attendant_id = ?
+        ORDER BY e.created_at DESC
+    `).all(id);
+
+
+    res.json({
+      evaluations : stmt
+    })
+
+})
 
 module.exports = router;

@@ -1,7 +1,6 @@
 const summaryBody = document.getElementById('summaryBody');
 const summaryEmpty = document.getElementById('summaryEmpty');
-const allBody = document.getElementById('allBody');
-const allEmpty = document.getElementById('allEmpty');
+
 
 function badgeFor(value) {
   if (value === null || value === undefined) return '<span class="badge badge-mid">—</span>';
@@ -26,61 +25,54 @@ async function checkAdmin() {
 }
 
 async function loadSummary() {
-  const res = await fetch('/api/admin/summary');
-  const data = await res.json();
+  try {
 
-  summaryBody.innerHTML = '';
-  if (!data.summary.length) {
+    const res = await fetch('/api/admin/summary');
+    const data = await res.json();
+
+    summaryBody.innerHTML = '';
+
+    if (!data.summary.length) {
+      summaryEmpty.style.display = 'block';
+      return;
+    }
+
+    summaryEmpty.style.display = 'none';
+
+    data.summary.forEach(row => {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td>${row.name}</td>
+        <td>${row.total_avaliacoes}</td>
+        <td>${badgeFor(row.media_pergunta1)}</td>
+        <td>${badgeFor(row.media_pergunta2)}</td>
+        <td>${badgeFor(row.media_geral)}</td>
+        <td>
+          <button class="details-btn" data-id="${row.id}">
+            Ver
+          </button>
+        </td>
+      `;
+
+      summaryBody.appendChild(tr);
+    });
+
+    document.querySelectorAll('.details-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = `/attendant.html?id=${btn.dataset.id}`;
+      });
+    });
+
+  } catch (err) {
     summaryEmpty.style.display = 'block';
-    return;
+    summaryEmpty.textContent = 'Erro ao carregar os dados.';
   }
-  summaryEmpty.style.display = 'none';
-
-  data.summary.forEach(row => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${row.name}</td>
-      <td>${row.total_avaliacoes}</td>
-      <td>${badgeFor(row.media_pergunta1)}</td>
-      <td>${badgeFor(row.media_pergunta2)}</td>
-      <td>${badgeFor(row.media_geral)}</td>
-    `;
-    summaryBody.appendChild(tr);
-  });
 }
 
-async function loadAll() {
-  const res = await fetch('/api/admin/evaluations');
-  const data = await res.json();
 
-  allBody.innerHTML = '';
-  if (!data.evaluations.length) {
-    allEmpty.style.display = 'block';
-    return;
-  }
-  allEmpty.style.display = 'none';
 
-  data.evaluations.forEach(ev => {
-    const tr = document.createElement('tr');
-    const date = new Date(ev.created_at).toLocaleString('pt-BR');
-    tr.innerHTML = `
-      <td>${ev.attendant_name}</td>
-      <td>${'★'.repeat(ev.question1_rating)}${'☆'.repeat(5 - ev.question1_rating)}</td>
-      <td>${'★'.repeat(ev.question2_rating)}${'☆'.repeat(5 - ev.question2_rating)}</td>
-      <td>${date}</td>
-    `;
-    allBody.appendChild(tr);
-  });
-}
 
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
-  });
-});
 
 document.getElementById('backBtn').addEventListener('click', () => {
   window.location.href = '/home.html';
@@ -93,8 +85,8 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
 
 (async () => {
   const ok = await checkAdmin();
+
   if (ok) {
-    loadSummary();
-    loadAll();
+    await loadSummary();
   }
 })();

@@ -4,24 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Início - Avaliação de Atendimento</title>
+
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
+
 <body>
-  <div class="screen">
-    <div class="card home-card">
-      <div class="welcome-text">Bem-vindo(a),</div>
-      <div class="welcome-name" id="userName">...</div>
 
-      <button class="btn btn-primary start-btn" id="startBtn">Iniciar Avaliação</button>
-
-      <div class="footer-actions">
-        <button class="btn btn-secondary btn-small" id="switchBtn">Trocar usuário</button>
-        <button class="btn btn-secondary btn-small" id="adminBtn" style="display:none;">Painel Admin</button>
-      </div>
-    </div>
+  <div class="background">
+    <div class="wave-top"></div>
+    <div class="wave-bottom"></div>
   </div>
 
-  <script src="/js/home.js"></script>
+  <div class="screen">
+
+    <img src="img/logo_dae.png" class="logo" alt="DAE Americana">
+
+    <div class="card home-card">
+
+      <div class="welcome-text">
+        Bem-vindo(a), avalie o atendimento do, 
+      </div>
+
+      <div class="welcome-name" id="userName">
+        ...
+      </div>
+
+      <button class="btn-login start-btn" id="startBtn">
+        Iniciar Avaliação
+      </button>
+
+      <div class="footer-actions">
+
+        <button class="btn-small" id="switchBtn">
+          Trocar usuário
+        </button>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="js/home.js"></script>
+
 </body>
 </html>

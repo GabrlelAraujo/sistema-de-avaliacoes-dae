@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhes do Atendente</title>
+
+    
+    <link rel="stylesheet" href="css/attendant.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="header-left">
+
+        <img src="img/logo_dae.png" class="logo" alt="DAE">
+
+        <div>
+            <h1 id="attendantName">Carregando...</h1>
+            <p>Histórico de avaliações</p>
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button id="backBtn" class="header-btn">
+            Voltar
+        </button>
+
+    </div>
+
+</header>
+
+<main class="container">
+
+    <div class="summary">
+
+        <div class="summary-card">
+            <span>Total de avaliações</span>
+            <strong id="totalEvaluations">0</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>Média Pergunta 1</span>
+            <strong id="avgQuestion1">-</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>Média Pergunta 2</span>
+            <strong id="avgQuestion2">-</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>Média Geral</span>
+            <strong id="avgGeneral">-</strong>
+        </div>
+
+    </div>
+
+    <section class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Data</th>
+                    <th>Pergunta 1</th>
+                    <th>Pergunta 2</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="evaluationsBody">
+
+            </tbody>
+
+        </table>
+
+        <div
+            id="emptyState"
+            class="empty-state"
+            style="display:none;"
+        >
+            Nenhuma avaliação encontrada.
+        </div>
+
+    </section>
+
+</main>
+
+<script src="js/attendant.js"></script>
+
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 /* ==========================
-   PAINEL ADMINISTRATIVO
+   DETALHES DO ATENDENTE
 ========================== */
 
 body{
@@ -18,7 +18,7 @@ body{
 
     background:#0d5cb6;
 
-    color:white;
+    color:#fff;
 
     display:flex;
     justify-content:space-between;
@@ -47,7 +47,7 @@ body{
 .header h1{
 
     margin:0;
-    font-size:26px;
+    font-size:28px;
 
 }
 
@@ -59,30 +59,23 @@ body{
 
 }
 
-.header-right{
-
-    display:flex;
-    gap:15px;
-
-}
-
 .header-btn{
 
     height:42px;
 
-    padding:0 20px;
+    padding:0 22px;
 
     border:none;
 
     border-radius:10px;
 
-    cursor:pointer;
+    background:#fff;
+
+    color:#0d5cb6;
 
     font-weight:600;
 
-    background:white;
-
-    color:#0d5cb6;
+    cursor:pointer;
 
     transition:.2s;
 
@@ -94,14 +87,6 @@ body{
 
 }
 
-.header-btn.danger{
-
-    background:#e53935;
-
-    color:white;
-
-}
-
 /* ==========================
    CONTAINER
 ========================== */
@@ -109,7 +94,6 @@ body{
 .container{
 
     width:95%;
-
     max-width:1500px;
 
     margin:35px auto;
@@ -117,46 +101,52 @@ body{
 }
 
 /* ==========================
-   PESQUISA
+   CARDS
 ========================== */
 
-.toolbar{
+.summary{
 
-    margin-bottom:25px;
+    display:grid;
 
-}
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-.search-box{
+    gap:20px;
 
-    width:350px;
-
-}
-
-.search-box input{
-
-    width:100%;
-
-    height:48px;
-
-    border-radius:12px;
-
-    border:1px solid #d4dce6;
-
-    padding:0 18px;
-
-    font-size:15px;
-
-    outline:none;
-
-    transition:.2s;
+    margin-bottom:30px;
 
 }
 
-.search-box input:focus{
+.summary-card{
 
-    border-color:#0d5cb6;
+    background:#fff;
 
-    box-shadow:0 0 0 4px rgba(13,92,182,.12);
+    border-radius:16px;
+
+    padding:24px;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
+
+    border-left:6px solid #00a859;
+
+}
+
+.summary-card span{
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+}
+
+.summary-card strong{
+
+    font-size:30px;
+
+    color:#0d5cb6;
 
 }
 
@@ -166,13 +156,13 @@ body{
 
 .table-container{
 
-    background:white;
+    background:#fff;
 
     border-radius:18px;
 
     overflow:hidden;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
 
 }
 
@@ -188,7 +178,7 @@ thead{
 
     background:#0d5cb6;
 
-    color:white;
+    color:#fff;
 
 }
 
@@ -196,9 +186,9 @@ th{
 
     padding:18px;
 
-    font-size:14px;
-
     text-align:left;
+
+    font-size:14px;
 
     font-weight:600;
 
@@ -227,69 +217,16 @@ tbody tr:hover{
 }
 
 /* ==========================
-   BADGES
+   ESTRELAS
 ========================== */
 
-.badge{
+.stars{
 
-    padding:6px 12px;
+    color:#f5b400;
 
-    border-radius:30px;
+    font-size:18px;
 
-    font-size:13px;
-
-    font-weight:600;
-
-}
-
-.badge-good{
-
-    background:#e7f8ec;
-    color:#1b8d45;
-
-}
-
-.badge-mid{
-
-    background:#fff5dc;
-    color:#c57c00;
-
-}
-
-.badge-low{
-
-    background:#fde8e8;
-    color:#d93025;
-
-}
-
-/* ==========================
-   BOTÃO VER
-========================== */
-
-.details-btn{
-
-    background:#0d5cb6;
-
-    color:white;
-
-    border:none;
-
-    border-radius:8px;
-
-    padding:8px 16px;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-    transition:.2s;
-
-}
-
-.details-btn:hover{
-
-    background:#0a4d98;
+    letter-spacing:2px;
 
 }
 
@@ -339,12 +276,6 @@ tbody tr:hover{
 
     }
 
-    .search-box{
-
-        width:100%;
-
-    }
-
     .table-container{
 
         overflow-x:auto;
@@ -353,7 +284,29 @@ tbody tr:hover{
 
     table{
 
-        min-width:850px;
+        min-width:650px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .summary{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .summary-card{
+
+        padding:20px;
+
+    }
+
+    .summary-card strong{
+
+        font-size:24px;
 
     }
 

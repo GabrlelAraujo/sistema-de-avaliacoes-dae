@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'troque-esta-chave-secreta-em-producao',
+  secret: 'chaves',
   resave: false,
   saveUninitialized: false,
   cookie: {
