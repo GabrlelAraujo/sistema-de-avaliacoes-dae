@@ -13,7 +13,7 @@ const id = new URLSearchParams(window.location.search).get('id');
 function stars(value) {
     return '★'.repeat(value) + '☆'.repeat(5 - value);
 }
-
+// checa se é admin
 async function checkAdmin() {
 
     const res = await fetch('/api/auth/me');

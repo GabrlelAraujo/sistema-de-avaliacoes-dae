@@ -6,6 +6,7 @@ const router = express.Router();
 
 // GET /api/admin/attendants -> lista simples (usada também na troca de usuário)
 router.get('/attendants', requireAuth, (req, res) => {
+
   const attendants = db.prepare(`
     SELECT id, name, username FROM users WHERE role = 'attendant' ORDER BY name
   `).all();
@@ -31,6 +32,49 @@ router.get('/summary', requireAdmin, (req, res) => {
   res.json({ summary });
 });
 
+// POST /api/admin/attendants -> cadastra um novo atendente
+router.post('/attendants', requireAdmin, (req, res) => {
+
+    const { name, username, password } = req.body;
+
+    // Verifica se todos os campos foram preenchidos
+    if (!name || !username || !password) {
+        return res.status(400).json({
+            error: 'Preencha todos os campos.'
+        });
+    }
+
+    // Verifica se o username já existe
+    const exists = db.prepare(`
+        SELECT id
+        FROM users
+        WHERE username = ?
+    `).get(username);
+
+    if (exists) {
+        return res.status(400).json({
+            error: 'Esse usuário já existe.'
+        });
+    }
+
+    // Insere o novo atendente
+    db.prepare(`
+        INSERT INTO users
+        (
+            name,
+            username,
+            password,
+            role
+        )
+        VALUES
+        (?, ?, ?, 'attendant')
+    `).run(name, username, password);
+
+    res.json({
+        success: true
+    });
+
+});
 
 //GET /api/admin/attendant/:id -> lista de avaliações por atendente
 router.get('/attendant/:id', requireAdmin, (req, res) => {
@@ -49,11 +93,40 @@ router.get('/attendant/:id', requireAdmin, (req, res) => {
         ORDER BY e.created_at DESC
     `).all(id);
 
-
     res.json({
       evaluations : stmt
     })
 
 })
+
+router.delete('/attendants/:id', requireAdmin, (req, res) => {
+
+    const { id } = req.params;
+
+    // Exclui todas as avaliações do atendente
+    db.prepare(`
+        DELETE FROM evaluations
+        WHERE attendant_id = ?
+    `).run(id);
+
+    // Agora exclui o usuário
+    const result = db.prepare(`
+        DELETE FROM users
+        WHERE id = ?
+    `).run(id);
+
+    if (result.changes === 0) {
+        return res.status(404).json({
+            error: 'Usuário não encontrado.'
+        });
+    }
+
+    res.json({
+        success: true
+    });
+
+});
+
+
 
 module.exports = router;

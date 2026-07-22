@@ -1,15 +1,17 @@
 const summaryBody = document.getElementById('summaryBody');
 const summaryEmpty = document.getElementById('summaryEmpty');
 
-
+// recebe as notas 
 function badgeFor(value) {
   if (value === null || value === undefined) return '<span class="badge badge-mid">—</span>';
   const v = Number(value);
-  if (v >= 4) return `<span class="badge badge-good">${v.toFixed(2)}</span>`;
-  if (v >= 2.5) return `<span class="badge badge-mid">${v.toFixed(2)}</span>`;
-  return `<span class="badge badge-low">${v.toFixed(2)}</span>`;
+  if (v >= 4) return `<span class="badge badge-good"> ${v.toFixed(2)} </span>`;
+  if (v >= 2.5) return `<span class="badge badge-mid"> ${v.toFixed(2)} </span>`;
+  return `<span class="badge badge-low">${v.toFixed(2)} </span>`;
 }
 
+
+// checa se é admin
 async function checkAdmin() {
   const res = await fetch('/api/auth/me');
   if (!res.ok) {
@@ -53,7 +55,7 @@ async function loadSummary() {
             Ver
           </button>
         </td>
-      `;
+        `;
 
       summaryBody.appendChild(tr);
     });
@@ -77,6 +79,11 @@ async function loadSummary() {
 document.getElementById('backBtn').addEventListener('click', () => {
   window.location.href = '/home.html';
 });
+
+document.getElementById('CadasAttend').addEventListener('click', () => {
+  window.location.href = '/CadastrarUsuario.html' ;
+})
+
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   await fetch('/api/auth/logout', { method: 'POST' });
