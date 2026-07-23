@@ -66,7 +66,7 @@ async function loadUsers() {
     }
 }
 
-
+// deleta usuario
 async function deleteUser(id) {
 
     const confirmar = confirm(
@@ -104,7 +104,7 @@ async function deleteUser(id) {
 
 }
 
-
+// criar usuario
 async function saveUser() {
 
         const name = document.getElementById('name').value.trim();
@@ -116,15 +116,54 @@ async function saveUser() {
         return;
     }
 
-    
+    try {
+        const res = await fetch ("/api/admin/attendants", {
+            
+            method: "POST",
 
+            headers: {
+                "Content-Type": "application/json"
+            },
 
+            body: JSON.stringify({
+                name,
+                username,
+                password
+            })
+        })
 
+        const data = await res.json()
+
+     if (!res.ok) {
+
+        alert(data.error);
+        return;
+
+        }
+
+         alert('Atendente Cadastrado com sucesso.');
+
+        // Limpa os campos
+        document.getElementById('name').value = '';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+
+        // Atualiza a tabela
+        await loadUsers();
+
+    } catch (err) {
+        alert("erro ao cadastrar atendente")
+    }
+  
 }
 
 
 
+document.getElementById('saveBtn').addEventListener('click', () => {
 
+    saveUser();
+
+});
 
 
 

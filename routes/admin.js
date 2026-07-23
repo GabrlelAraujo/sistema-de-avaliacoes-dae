@@ -1,6 +1,9 @@
 const express = require('express');
 const db = require('../database/db');
+const bcrypt = require('bcryptjs')
 const { requireAdmin, requireAuth } = require('../middleware/auth');
+
+const SALT_ROUNDS = 10
 
 const router = express.Router();
 
@@ -37,6 +40,8 @@ router.post('/attendants', requireAdmin, (req, res) => {
 
     const { name, username, password } = req.body;
 
+    const usernameFormatado = username.trim().toLowerCase();
+
     // Verifica se todos os campos foram preenchidos
     if (!name || !username || !password) {
         return res.status(400).json({
@@ -49,13 +54,16 @@ router.post('/attendants', requireAdmin, (req, res) => {
         SELECT id
         FROM users
         WHERE username = ?
-    `).get(username);
+    `).get(usernameFormatado);
 
     if (exists) {
         return res.status(400).json({
             error: 'Esse usuário já existe.'
         });
     }
+
+
+    const hash = bcrypt.hashSync(password, SALT_ROUNDS);
 
     // Insere o novo atendente
     db.prepare(`
@@ -68,7 +76,7 @@ router.post('/attendants', requireAdmin, (req, res) => {
         )
         VALUES
         (?, ?, ?, 'attendant')
-    `).run(name, username, password);
+    `).run(name, usernameFormatado, hash);
 
     res.json({
         success: true
